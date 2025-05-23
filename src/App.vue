@@ -3,11 +3,11 @@
   <div v-else class="app-container">
     <div class="scrollable-content-container">
       <div class="row scrollable-content m-0 p-3 h-100">
-        <div class="col-12 d-lg-none p-0">
+        <div class="col-12 d-xl-none p-0">
           <NavBarVue />
         </div>
         <div
-          class="col-3 d-none d-lg-block p-0"
+          class="col-3 d-none d-xl-block p-0"
           style="
             shadow: 0 3px 8px 0 rgba(15, 15, 20, 0.2);
             height: calc(100vh - 30px);
@@ -17,13 +17,13 @@
         >
           <Sidebar />
         </div>
-        <div class="col-lg-8 col-12 p-0 main-content-container">
+        <div class="col-xl-8 col-12 p-0 main-content-container">
           <div class="">
             <router-view />
           </div>
         </div>
         <div
-          class="d-none d-lg-block col-1 p-0"
+          class="d-none d-xl-block col-1 p-0"
           style="
             shadow: 0 3px 8px 0 rgba(15, 15, 20, 0.2);
             background-color: #20202a;

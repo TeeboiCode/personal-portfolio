@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid p-0">
     <nav
-      class="navbar navbar-expand-lg bg-dark border-bottom border-body"
+      class="navbar navbar-expand-xl bg-dark border-bottom border-body"
       data-bs-theme="dark"
       style="background-color: transparent !important"
     >
@@ -15,7 +15,7 @@
       </div>
       <!-- Overlay Sidebar Menu -->
       <div v-if="openMenu" class="menubar-overlay">
-        <div class="menubar-sidebar animate__animated animate__slideInRight ">
+        <div class="menubar-sidebar animate__animated animate__slideInRight">
           <div
             class="d-flex justify-content-between align-items-center p-3 border-bottom"
           >
