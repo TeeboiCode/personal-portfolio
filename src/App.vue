@@ -4,8 +4,9 @@
     <div class="scrollable-content-container">
       <div class="row scrollable-content m-0 p-3 h-100">
         <div class="col-12 d-xl-none p-0">
-          <NavBarVue />
+          <NavBarVue @toggleSidebar="toggleSidebar" />
         </div>
+        <!-- Desktop Sidebar -->
         <div
           class="col-3 d-none d-xl-block p-0"
           style="
@@ -15,8 +16,14 @@
             padding-right: 1px !important;
           "
         >
-          <Sidebar />
+          <Sidebar :isOpen="true" />
         </div>
+        <!-- Mobile/Tablet Sidebar -->
+        <Sidebar
+          :isOpen="isSidebarOpen"
+          @close="closeSidebar"
+          class="d-xl-none"
+        />
         <div class="col-xl-8 col-12 p-0 main-content-container">
           <div class="">
             <router-view />
@@ -47,6 +54,16 @@ import NavBarVue from "./components/NavBar.vue";
 import Preloader from "./components/Preloader.vue";
 
 const loading = ref(true);
+const isSidebarOpen = ref(false);
+
+const toggleSidebar = () => {
+  isSidebarOpen.value = !isSidebarOpen.value;
+};
+
+const closeSidebar = () => {
+  isSidebarOpen.value = false;
+};
+
 onMounted(() => {
   setTimeout(() => {
     loading.value = false;

@@ -23,13 +23,13 @@
           Discover my Amazing<br />Art Space!
         </h1>
         <div class="my-4 text-accent text-center text-lg-start hero-typing">
-          <code class="d-none d-lg-block"
+          <code class="d-none d-md-block"
             >&lt;<span style="color: #ffc107">code</span>&gt;
             {{ displayText }} &lt;<span style="color: #ffc107">/code</span
             >&gt;</code
           >
 
-          <code class="d-block d-lg-none"
+          <code class="d-block d-md-none"
             >&lt;<span style="color: #ffc107">code</span>&gt;
             {{ phrases[1] }} &lt;<span style="color: #ffc107">/code</span
             >&gt;</code

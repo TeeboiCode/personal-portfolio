@@ -6,7 +6,11 @@
       style="background-color: transparent !important"
     >
       <div class="container-fluid">
-        <a class="navbar-brand" href="#" style="color: #82828a"
+        <a
+          class="navbar-brand"
+          href="#"
+          style="color: #82828a"
+          @click="toggleSidebar"
           ><i class="bi bi-three-dots-vertical"></i
         ></a>
         <button class="navbar-toggler border-0" @click="openMenu = true">
@@ -73,6 +77,12 @@
 <script setup>
 import { ref } from "vue";
 const openMenu = ref(false);
+
+const emit = defineEmits(["toggleSidebar"]);
+
+const toggleSidebar = () => {
+  emit("toggleSidebar");
+};
 </script>
 
 <style scoped>

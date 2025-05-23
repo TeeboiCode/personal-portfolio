@@ -1,5 +1,8 @@
 <template>
-  <aside class="sidebar d-flex flex-column align-items-center m-0 rounded-0">
+  <aside
+    class="sidebar d-flex flex-column align-items-center m-0 rounded-0"
+    :class="{ 'sidebar-open': isOpen }"
+  >
     <div class="profile py-5">
       <div class="position-relative">
         <div
@@ -26,6 +29,15 @@
         Graphic Designer
       </div>
     </div>
+
+    <!-- Close button for mobile -->
+    <button
+      v-if="!isDesktop"
+      class="btn btn-link text-white fs-3 p-0 close-sidebar"
+      @click="$emit('close')"
+    >
+      <i class="bi bi-x"></i>
+    </button>
 
     <div class="profile-info w-100 px-4">
       <ul class="list-unstyled mb-3 px-2">
@@ -238,9 +250,24 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
+
+const props = defineProps({
+  isOpen: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const emit = defineEmits(["close"]);
+const isDesktop = ref(window.innerWidth >= 1200);
+
+const handleResize = () => {
+  isDesktop.value = window.innerWidth >= 1200;
+};
 
 onMounted(() => {
+  window.addEventListener("resize", handleResize);
   const bars = document.querySelectorAll(".progress-bar[data-progress]");
   bars.forEach((bar) => {
     const percent = bar.getAttribute("data-progress");
@@ -250,6 +277,10 @@ onMounted(() => {
       bar.style.width = percent;
     }, 200);
   });
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", handleResize);
 });
 </script>
 
@@ -263,6 +294,7 @@ onMounted(() => {
   flex-direction: column;
   height: 100vh;
   position: relative;
+  transition: transform 0.3s ease-in-out;
 }
 
 .profile {
@@ -392,5 +424,32 @@ onMounted(() => {
 .social-links a:hover {
   color: #ffc107;
   transform: scale(1.2);
+}
+
+@media (max-width: 1199.98px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1050;
+    transform: translateX(-100%);
+    width: 300px;
+    max-width: 90vw;
+    background: #20202a;
+    box-shadow: 2px 0 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+  .close-sidebar {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: #fff;
+    z-index: 2;
+  }
 }
 </style>
