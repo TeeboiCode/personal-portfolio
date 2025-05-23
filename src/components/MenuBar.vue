@@ -8,21 +8,27 @@
       <i class="bi bi-list" style="font-size: 2.5rem"></i>
     </button>
 
+    <div class="position-relative">
+      <div class="link-title">Home</div>
+    </div>
+
     <!-- Overlay Sidebar Menu -->
     <div v-if="openMenu" class="menubar-overlay">
       <div class="menubar-sidebar animate__animated animate__slideInRight">
         <div
-          class="d-flex justify-content-between align-items-center p-3 border-bottom"
+          class="d-flex justify-content-start align-items-center py-3 px-4"
+          style="background: rgb(12 13 16)"
         >
           <span></span>
           <button
-            class="btn btn-link text-white fs-3 p-0"
+            class="btn btn-link text-white fs-5 p-0"
             @click="openMenu = false"
+            style="color: #8c8c8e"
           >
             <i class="bi bi-x"></i>
           </button>
         </div>
-        <nav class="p-4">
+        <nav class="p-4 mt-4">
           <router-link
             to="/"
             class="menubar-link"
@@ -74,9 +80,9 @@ const openMenu = ref(false);
   display: flex;
 }
 .menubar-sidebar {
-  width: 340px;
+  width: 230px;
   max-width: 90vw;
-  background: #23252b;
+  background: #121316;
   color: #fff;
   height: 100vh;
   box-shadow: 2px 0 16px rgba(0, 0, 0, 0.2);
@@ -102,15 +108,34 @@ const openMenu = ref(false);
 }
 .menubar-link {
   display: block;
-  color: #fff;
+  color: #8c8c8e;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-weight: 400;
+  font-size: 0.85rem;
   margin-bottom: 1.2rem;
   transition: color 0.2s;
+  text-transform: uppercase;
+  text-align: left;
+  letter-spacing: 1px;
 }
 .menubar-link.active,
 .menubar-link:hover {
   color: #ffc107;
+}
+
+.link-title {
+  color: #8c8c8e;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  text-align: left;
+  letter-spacing: 1px;
+  transform: rotate(90deg);
+  position: absolute;
+  text-align: center;
+  left: 2rem;
+  top: 3rem;
 }
 </style>

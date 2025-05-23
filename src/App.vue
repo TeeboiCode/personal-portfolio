@@ -94,7 +94,7 @@ onMounted(() => {
   left: 0;
   width: 100%;
   z-index: 2;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   /* overflow-x: hidden; */
 }
 
