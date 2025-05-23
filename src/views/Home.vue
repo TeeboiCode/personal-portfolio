@@ -12,7 +12,7 @@
           </div>
           <div class="row g-4">
             <div
-              class="col-md-4 col-sm-6 col-12 service-card-container"
+              class="col-lg-4 col-sm-6 col-12 service-card-container"
               v-for="(service, i) in services"
               :key="i"
             >
