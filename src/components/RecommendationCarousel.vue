@@ -2,11 +2,10 @@
   <div class="recommendation-carousel">
     <div class="recommendation-scroll-row mb-3" ref="scrollRow">
       <div
-        class="testimonial-card position-relative col-12 col-md-5"
+        class="testimonial-card"
         v-for="(rec, i) in props.recommendations"
         :key="i"
       >
-        <!-- style="min-width: 48%; max-width: 48%; flex: 0 0 48%" -->
         <RecommendationCard
           :name="rec.name"
           :role="rec.role"
@@ -45,29 +44,48 @@ const props = defineProps({
 });
 
 const currentSlide = ref(0);
-const perSlide = 2;
-const totalSlides = computed(() =>
-  Math.ceil(props.recommendations.length / perSlide)
-);
 const scrollRow = ref(null);
+const isMobile = ref(window.innerWidth < 768);
+
+// Update isMobile on window resize
+const handleResize = () => {
+  isMobile.value = window.innerWidth < 768;
+};
+
+onMounted(() => {
+  window.addEventListener("resize", handleResize);
+});
+
+const totalSlides = computed(() => props.recommendations.length);
 
 function scrollToSlide(slideIdx) {
   if (!scrollRow.value) return;
   const cardWidth = scrollRow.value.firstElementChild?.offsetWidth || 0;
-  const gap = 32; // 2rem gap
-  const scrollLeft = slideIdx * (cardWidth * perSlide + gap);
+  const gap = isMobile.value ? 16 : 32; // 1rem on mobile, 2rem on desktop
+  const scrollLeft = slideIdx * (cardWidth + gap);
   scrollRow.value.scrollTo({ left: scrollLeft, behavior: "smooth" });
 }
 
 function prevSlide() {
-  currentSlide.value =
-    (currentSlide.value - 1 + totalSlides.value) % totalSlides.value;
+  if (currentSlide.value > 0) {
+    currentSlide.value--;
+  } else {
+    // If at first slide, go to last possible slide
+    currentSlide.value = totalSlides.value - (isMobile.value ? 1 : 2);
+  }
   scrollToSlide(currentSlide.value);
 }
+
 function nextSlide() {
-  currentSlide.value = (currentSlide.value + 1) % totalSlides.value;
+  if (currentSlide.value < totalSlides.value - (isMobile.value ? 1 : 2)) {
+    currentSlide.value++;
+  } else {
+    // If at last slide, go back to first slide
+    currentSlide.value = 0;
+  }
   scrollToSlide(currentSlide.value);
 }
+
 function goToSlide(idx) {
   currentSlide.value = idx;
   scrollToSlide(currentSlide.value);
@@ -81,27 +99,36 @@ watch(currentSlide, (val) => {
 <style scoped>
 .recommendation-carousel {
   width: 100%;
+  padding: 0 1rem;
 }
 .recommendation-scroll-row {
   display: flex;
   flex-direction: row;
-  gap: 2rem;
+  gap: 1rem;
   overflow-x: auto;
   scroll-behavior: smooth;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0.5rem 0;
+  scroll-snap-type: x mandatory;
 }
 .recommendation-scroll-row::-webkit-scrollbar {
-  display: none; /* Chrome/Safari/Webkit */
+  display: none;
 }
 .testimonial-card {
-  background: linear-gradient(159deg, #2d2d3a 0%, #2b2b35 100%);
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  padding: 2rem 1.5rem 1.5rem 1.5rem;
-  position: relative;
-  min-height: 220px;
-  overflow: visible;
+  flex: 0 0 100%;
+  max-width: 100%;
+  min-width: 280px;
+  scroll-snap-align: start;
+}
+@media (min-width: 768px) {
+  .testimonial-card {
+    flex: 0 0 calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
+  }
+  .recommendation-scroll-row {
+    gap: 2rem;
+  }
 }
 .testimonial-avatar {
   width: 64px;
