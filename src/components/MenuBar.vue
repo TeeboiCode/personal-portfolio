@@ -9,7 +9,7 @@
     </button>
 
     <div class="position-relative">
-      <div class="link-title">Home</div>
+      <div class="link-title">{{ currentPageTitle }}</div>
     </div>
 
     <!-- Overlay Sidebar Menu -->
@@ -68,7 +68,22 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+const currentPageTitle = ref("Home");
+
+watch(
+  () => route.path,
+  (newPath) => {
+    // Remove leading slash and capitalize first letter
+    const path = newPath.slice(1) || "home";
+    currentPageTitle.value = path.charAt(0).toUpperCase() + path.slice(1);
+  },
+  { immediate: true }
+);
+
 const openMenu = ref(false);
 </script>
 
@@ -133,9 +148,10 @@ const openMenu = ref(false);
   text-align: left;
   letter-spacing: 1px;
   transform: rotate(90deg);
-  position: absolute;
   text-align: center;
-  left: 2rem;
-  top: 3rem;
+  display: flex;
+  margin: 3rem 2rem;
+  justify-content: center;
+  align-items: center;
 }
 </style>
