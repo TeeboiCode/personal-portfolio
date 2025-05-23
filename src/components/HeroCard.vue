@@ -3,7 +3,7 @@
     class="card-custom hero-card rounded-0 d-flex align-items-center justify-content-between flex-wrap flex-md-nowrap mb-0 p-0"
   >
     <div
-      class="p-lg-5 p-3 w-100 d-flex align-items-center justify-content-between overflow-hidden"
+      class="p-lg-5 p-4 w-100 d-flex align-items-center justify-content-between overflow-hidden"
       style="
         background-image: linear-gradient(
           90deg,
@@ -17,7 +17,7 @@
         class="d-flex flex-column align-items-center align-items-lg-start justify-content-center w-100"
       >
         <h1
-          class="text-center text-lg-start mb-0"
+          class="text-center text-lg-start mb-0 mt-3 mt-lg-0"
           style="font-size: 2.4rem; color: #fff; font-weight: 900 !important"
         >
           Discover my Amazing<br />Art Space!
