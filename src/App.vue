@@ -1,5 +1,6 @@
 <template>
-  <div class="app-container">
+  <Preloader v-if="loading" />
+  <div v-else class="app-container">
     <div class="scrollable-content-container">
       <div class="row scrollable-content m-0 p-3 h-100">
         <div class="col-12 d-md-none p-0">
@@ -39,9 +40,18 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from "vue";
 import MenuBar from "./components/MenuBar.vue";
 import Sidebar from "./components/Sidebar.vue";
 import NavBarVue from "./components/NavBar.vue";
+import Preloader from "./components/Preloader.vue";
+
+const loading = ref(true);
+onMounted(() => {
+  setTimeout(() => {
+    loading.value = false;
+  }, 2800);
+});
 </script>
 
 <style scoped>
