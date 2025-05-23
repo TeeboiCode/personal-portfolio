@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid p-0 py-lg-5 px-lg-4">
-    <div class="overlay-background d-none d-md-block"></div>
-    <div class="overlay-background-2 d-none d-md-block"></div>
+    <div class="overlay-background d-none d-xl-block"></div>
+    <div class="overlay-background-2 d-none d-xl-block"></div>
     <div class="row">
       <div class="col-lg-12 fade-in-left">
         <HeroCard />
