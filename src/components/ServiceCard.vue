@@ -5,7 +5,7 @@
       {{ description }}
     </p>
     <div
-      class="d-flex justify-content-start align-items-center position-absolute bottom-0 start-0 p-3"
+      class="d-flex justify-content-start align-items-center position-absolute bottom-0 start-0 p-4"
     >
       <a
         href="#"

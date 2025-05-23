@@ -13,7 +13,9 @@
         );
       "
     >
-      <div class="d-flex flex-column align-items-start justify-content-center">
+      <div
+        class="d-flex flex-column align-items-center align-items-lg-start justify-content-center w-100"
+      >
         <h1
           class="text-center text-lg-start mb-0"
           style="font-size: 2.4rem; color: #fff; font-weight: 900 !important"

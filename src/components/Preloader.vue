@@ -1,7 +1,7 @@
 <template>
   <div class="preloader-bg">
     <div class="preloader-content">
-      <div class="preloader-title">Artur Carter</div>
+      <div class="preloader-title">Oluwaleye Taiwo</div>
       <div class="preloader-underline">
         <div
           class="preloader-progress-bar"

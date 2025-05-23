@@ -12,7 +12,7 @@
           </div>
           <div class="row g-4">
             <div
-              class="col-md-4 service-card-container"
+              class="col-md-4 col-sm-6 col-12 service-card-container"
               v-for="(service, i) in services"
               :key="i"
             >
@@ -118,7 +118,8 @@ const recommendations = [
 
 <style scoped>
 .container-fluid {
-  background: #20202a;
+  /* background: #20202a; */
+  background: transparent;
   min-height: 100vh;
   overflow: hidden;
   position: relative;
@@ -147,9 +148,9 @@ const recommendations = [
     #1e1e28 100%
   );
 }
- .service-card-container{
-   height: 205px !important;
- }
+.service-card-container {
+  height: 245px !important;
+}
 @media (min-width: 768px) {
   .service-card-container {
     height: 255px !important;
