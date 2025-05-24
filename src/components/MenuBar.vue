@@ -36,12 +36,32 @@
             @click="openMenu = false"
             >HOME</router-link
           >
-          <router-link
-            to="/portfolio"
-            class="menubar-link"
-            @click="openMenu = false"
-            >PORTFOLIO</router-link
-          >
+
+          <!-- Portfolio Dropdown -->
+          <div class="portfolio-dropdown">
+            <div class="menubar-link dropdown-header" @click="togglePortfolio">
+              PORTFOLIO
+              <i
+                class="bi"
+                :class="isPortfolioOpen ? 'bi-chevron-up' : 'bi-chevron-down'"
+              ></i>
+            </div>
+            <div
+              class="dropdown-content text-start"
+              :class="{ show: isPortfolioOpen }"
+            >
+              <router-link to="/portfolio/graphic-design" class="dropdown-item"
+                >Graphic Design</router-link
+              >
+              <router-link to="/portfolio/web-development" class="dropdown-item"
+                >Web Development</router-link
+              >
+              <router-link to="/portfolio/ui-ux-design" class="dropdown-item"
+                >UI/UX Design</router-link
+              >
+            </div>
+          </div>
+
           <router-link
             to="/history"
             class="menubar-link"
@@ -73,18 +93,21 @@ import { useRoute } from "vue-router";
 
 const route = useRoute();
 const currentPageTitle = ref("Home");
+const openMenu = ref(false);
+const isPortfolioOpen = ref(false);
+
+const togglePortfolio = () => {
+  isPortfolioOpen.value = !isPortfolioOpen.value;
+};
 
 watch(
   () => route.path,
   (newPath) => {
-    // Remove leading slash and capitalize first letter
     const path = newPath.slice(1) || "home";
     currentPageTitle.value = path.charAt(0).toUpperCase() + path.slice(1);
   },
   { immediate: true }
 );
-
-const openMenu = ref(false);
 </script>
 
 <style scoped>
@@ -153,5 +176,43 @@ const openMenu = ref(false);
   margin: 3rem 2rem;
   justify-content: center;
   align-items: center;
+}
+
+.portfolio-dropdown {
+  position: relative;
+}
+
+.dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  background: rgba(0, 0, 0, 0.2);
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem;
+}
+
+.dropdown-content.show {
+  max-height: 200px;
+  transition: max-height 0.5s ease-in;
+}
+
+.dropdown-item {
+  display: block;
+  color: #8c8c8e;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  transition: color 0.2s;
+}
+
+.dropdown-item:hover {
+  color: #ffc107;
 }
 </style>

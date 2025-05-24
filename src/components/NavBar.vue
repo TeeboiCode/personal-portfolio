@@ -21,17 +21,19 @@
       <div v-if="openMenu" class="menubar-overlay">
         <div class="menubar-sidebar animate__animated animate__slideInRight">
           <div
-            class="d-flex justify-content-between align-items-center p-3 border-bottom"
+            class="d-flex justify-content-start align-items-center py-3 px-4"
+            style="background: rgb(12 13 16)"
           >
             <span></span>
             <button
-              class="btn btn-link text-white fs-3 p-0"
+              class="btn btn-link text-white fs-5 p-0"
               @click="openMenu = false"
+              style="color: #8c8c8e"
             >
               <i class="bi bi-x"></i>
             </button>
           </div>
-          <nav class="p-4">
+          <nav class="p-4 mt-4">
             <router-link
               to="/"
               class="menubar-link"
@@ -39,12 +41,39 @@
               @click="openMenu = false"
               >HOME</router-link
             >
-            <router-link
-              to="/portfolio"
-              class="menubar-link"
-              @click="openMenu = false"
-              >PORTFOLIO</router-link
-            >
+
+            <!-- Portfolio Dropdown -->
+            <div class="portfolio-dropdown">
+              <div
+                class="menubar-link dropdown-header"
+                @click="togglePortfolio"
+              >
+                PORTFOLIO
+                <i
+                  class="bi"
+                  :class="isPortfolioOpen ? 'bi-chevron-up' : 'bi-chevron-down'"
+                ></i>
+              </div>
+              <div
+                class="dropdown-content text-start"
+                :class="{ show: isPortfolioOpen }"
+              >
+                <router-link
+                  to="/portfolio/graphic-design"
+                  class="dropdown-item"
+                  >Graphic Design</router-link
+                >
+                <router-link
+                  to="/portfolio/web-development"
+                  class="dropdown-item"
+                  >Web Development</router-link
+                >
+                <router-link to="/portfolio/ui-ux-design" class="dropdown-item"
+                  >UI/UX Design</router-link
+                >
+              </div>
+            </div>
+
             <router-link
               to="/history"
               class="menubar-link"
@@ -75,8 +104,26 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+const currentPageTitle = ref("Home");
 const openMenu = ref(false);
+const isPortfolioOpen = ref(false);
+
+const togglePortfolio = () => {
+  isPortfolioOpen.value = !isPortfolioOpen.value;
+};
+
+watch(
+  () => route.path,
+  (newPath) => {
+    const path = newPath.slice(1) || "home";
+    currentPageTitle.value = path.charAt(0).toUpperCase() + path.slice(1);
+  },
+  { immediate: true }
+);
 
 const emit = defineEmits(["toggleSidebar"]);
 
@@ -86,9 +133,6 @@ const toggleSidebar = () => {
 </script>
 
 <style scoped>
-.navbar-toggler:focus {
-  box-shadow: none;
-}
 .menubar-overlay {
   position: fixed;
   inset: 0;
@@ -96,9 +140,9 @@ const toggleSidebar = () => {
   display: flex;
 }
 .menubar-sidebar {
-  width: 340px;
+  width: 230px;
   max-width: 90vw;
-  background: #23252b;
+  background: #121316;
   color: #fff;
   height: 100vh;
   box-shadow: 2px 0 16px rgba(0, 0, 0, 0.2);
@@ -124,15 +168,73 @@ const toggleSidebar = () => {
 }
 .menubar-link {
   display: block;
-  color: #fff;
+  color: #8c8c8e;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-weight: 400;
+  font-size: 0.85rem;
   margin-bottom: 1.2rem;
   transition: color 0.2s;
+  text-transform: uppercase;
+  text-align: left;
+  letter-spacing: 1px;
 }
 .menubar-link.active,
 .menubar-link:hover {
+  color: #ffc107;
+}
+
+.link-title {
+  color: #8c8c8e;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  text-align: left;
+  letter-spacing: 1px;
+  transform: rotate(90deg);
+  text-align: center;
+  display: flex;
+  margin: 3rem 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.portfolio-dropdown {
+  position: relative;
+}
+
+.dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  background: rgba(0, 0, 0, 0.2);
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem;
+}
+
+.dropdown-content.show {
+  max-height: 200px;
+  transition: max-height 0.5s ease-in;
+}
+
+.dropdown-item {
+  display: block;
+  color: #8c8c8e;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  transition: color 0.2s;
+}
+
+.dropdown-item:hover {
   color: #ffc107;
 }
 </style>
