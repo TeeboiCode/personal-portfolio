@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid p-0">
     <nav
-      class="navbar navbar-expand-xl bg-dark border-bottom border-body"
+      class="navbar navbar-expand-xl bg-dark border-body"
       data-bs-theme="dark"
       style="background-color: transparent !important"
     >
@@ -43,7 +43,7 @@
             >
 
             <!-- Portfolio Dropdown -->
-            <div class="portfolio-dropdown">
+            <!-- <div class="portfolio-dropdown">
               <div
                 class="menubar-link dropdown-header"
                 @click="togglePortfolio"
@@ -72,7 +72,14 @@
                   >UI/UX Design</router-link
                 >
               </div>
-            </div>
+            </div> -->
+
+            <router-link
+              to="/portfolio"
+              class="menubar-link"
+              @click="openMenu = false"
+              >PORTFOLIO</router-link
+            >
 
             <router-link
               to="/history"

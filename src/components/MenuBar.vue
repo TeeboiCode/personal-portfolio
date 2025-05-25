@@ -38,7 +38,7 @@
           >
 
           <!-- Portfolio Dropdown -->
-          <div class="portfolio-dropdown">
+          <!-- <div class="portfolio-dropdown">
             <div class="menubar-link dropdown-header" @click="togglePortfolio">
               PORTFOLIO
               <i
@@ -60,7 +60,13 @@
                 >UI/UX Design</router-link
               >
             </div>
-          </div>
+          </div> -->
+          <router-link
+            to="/portfolio"
+            class="menubar-link"
+            @click="openMenu = false"
+            >PORTFOLIO</router-link
+          >
 
           <router-link
             to="/history"
@@ -68,6 +74,7 @@
             @click="openMenu = false"
             >HISTORY</router-link
           >
+
           <router-link to="/blog" class="menubar-link" @click="openMenu = false"
             >BLOG</router-link
           >
