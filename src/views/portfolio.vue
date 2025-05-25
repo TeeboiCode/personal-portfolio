@@ -1,5 +1,7 @@
 <template>
-  <div class="container py-4">
+  <div class="container p-0 py-lg-5 px-lg-4 fade-in">
+    <div class="overlay-background d-none d-lg-block"></div>
+    <div class="overlay-background-2 d-none d-lg-block"></div>
     <h2 class="mb-4 headling">Portfolio</h2>
     <div class="row g-4">
       <div
@@ -23,38 +25,42 @@ import Card from "../components/Card.vue";
 
 const cards = [
   {
-    image:
-      "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80",
+    image: "../assets/img/portfolio-img/work-1.jpg",
     title: "Fitness Trainer UI Card",
     link: "#",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+    image: "../assets/img/portfolio-img/work-2.jpg",
     title: "Business Card Design",
     link: "#",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
+    image: "../assets/img/portfolio-img/work-3.jpg",
     title: "Branding Flyer",
     link: "#",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80",
+    image: "../assets/img/portfolio-img/work-4.jpg",
     title: "Modern Web Template",
     link: "#",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
+    image: "../assets/img/portfolio-img/work-5.jpg",
     title: "UI Elements Pack",
     link: "#",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80",
+    image: "../assets/img/portfolio-img/work-6.jpg",
+    title: "Logo Design",
+    link: "#",
+  },
+  {
+    image: "../assets/img/portfolio-img/work-7.jpg",
+    title: "Logo Design",
+    link: "#",
+  },
+  {
+    image: "../assets/img/portfolio-img/work-8-scaled-1.jpg",
     title: "Logo Design",
     link: "#",
   },
@@ -72,5 +78,31 @@ const cards = [
   color: #fff;
   font-weight: 700;
   font-size: 1rem;
+}
+
+.overlay-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -3;
+  height: 360px;
+  background: url("../assets/img/bg.jpg") center center/cover no-repeat;
+}
+
+.overlay-background-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 360px;
+  z-index: -3;
+  background: linear-gradient(
+    180deg,
+    rgba(30, 30, 40, 0.93) 0%,
+    rgba(30, 30, 40, 0.96) 70%,
+    rgba(30, 30, 40, 0.99) 80%,
+    #1e1e28 100%
+  );
 }
 </style>

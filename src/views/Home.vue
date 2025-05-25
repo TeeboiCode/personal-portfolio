@@ -28,7 +28,7 @@
           <div class="section-title">Recommendations</div>
           <RecommendationCarousel :recommendations="recommendations" />
           <LogoCarousel />
-          <FooterBar />
+          <!-- <FooterBar /> -->
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@ import StatsCard from "../components/StatsCard.vue";
 import ServiceCard from "../components/ServiceCard.vue";
 import RecommendationCarousel from "../components/RecommendationCarousel.vue";
 import LogoCarousel from "../components/LogoCarousel.vue";
-import FooterBar from "../components/FooterBar.vue";
+// import FooterBar from "../components/FooterBar.vue";
 
 const services = [
   {

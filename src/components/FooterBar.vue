@@ -34,7 +34,7 @@
   text-align: center;
   font-size: 12px;
   padding: 1.2rem 1.5rem;
-  margin-top: 2rem;
+  /* margin-top: 1rem; */
 }
 .footer-bar a {
   color: #ffc107;

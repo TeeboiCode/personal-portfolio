@@ -27,6 +27,7 @@
         <div class="col-xl-8 col-12 p-0 main-content-container">
           <div class="">
             <router-view />
+            <div class="px-lg-4 p-0 mb-3"><FooterVue /></div>
           </div>
         </div>
         <div
@@ -52,6 +53,7 @@ import MenuBar from "./components/MenuBar.vue";
 import Sidebar from "./components/Sidebar.vue";
 import NavBarVue from "./components/NavBar.vue";
 import Preloader from "./components/Preloader.vue";
+import FooterVue from "./components/FooterBar.vue";
 
 const loading = ref(true);
 const isSidebarOpen = ref(false);

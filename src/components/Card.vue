@@ -1,5 +1,5 @@
 <template>
-  <div class="portfolio-card">
+  <div class="portfolio-card fade-in">
     <img :src="image" :alt="title" class="portfolio-image" />
     <div class="portfolio-overlay">
       <div class="portfolio-title">{{ title }}</div>
@@ -63,7 +63,7 @@ defineProps({
   bottom: 0;
 }
 .portfolio-title {
-  font-size: 1.05rem;
+  font-size: 0.85rem;
   font-weight: 600;
   margin-bottom: 0.7rem;
   color: #fff;
@@ -71,14 +71,14 @@ defineProps({
 .read-more {
   color: #ffc107;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   text-decoration: none;
   letter-spacing: 0.5px;
   transition: color 0.2s;
 }
 .read-more:hover {
   color: #fff;
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 .read-more span {
   font-size: 1.1em;
