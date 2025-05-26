@@ -1,6 +1,8 @@
 <template>
-  <div class="portfolio-card fade-in">
-    <img :src="image" :alt="title" class="portfolio-image" />
+  <div class="portfolio-card">
+    <div class="portfolio-image-wrapper">
+      <img :src="image" :alt="title" class="portfolio-image" />
+    </div>
     <div class="portfolio-overlay">
       <div class="portfolio-title">{{ title }}</div>
       <a v-if="link" :href="link" class="read-more"
@@ -29,20 +31,34 @@ defineProps({
   height: 100%;
   min-height: 220px;
   display: flex;
-  align-items: stretch;
+  flex-direction: column;
 }
 .portfolio-card:hover {
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+}
+.portfolio-image-wrapper {
+  width: 100%;
+  height: 220px;
+  background: #181920;
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+@media (max-width: 576px) {
+  .portfolio-image-wrapper {
+    height: 180px;
+  }
 }
 .portfolio-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
   transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 .portfolio-card:hover .portfolio-image {
-  /* transform: scale(1.02); */
+  transform: scale(1.04);
 }
 .portfolio-overlay {
   position: absolute;
@@ -53,7 +69,7 @@ defineProps({
   color: #fff;
   padding: 1.2rem 1rem 1.5rem 1rem;
   text-align: left;
-  transition: bottom 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: bottom 0.4s ease-out;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -63,7 +79,7 @@ defineProps({
   bottom: 0;
 }
 .portfolio-title {
-  font-size: 0.85rem;
+  font-size: 1.05rem;
   font-weight: 600;
   margin-bottom: 0.7rem;
   color: #fff;
@@ -71,14 +87,14 @@ defineProps({
 .read-more {
   color: #ffc107;
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   text-decoration: none;
   letter-spacing: 0.5px;
   transition: color 0.2s;
 }
 .read-more:hover {
   color: #fff;
-  /* text-decoration: underline; */
+  text-decoration: underline;
 }
 .read-more span {
   font-size: 1.1em;

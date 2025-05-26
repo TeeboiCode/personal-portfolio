@@ -25,42 +25,52 @@ import Card from "../components/Card.vue";
 
 const cards = [
   {
-    image: "../assets/img/portfolio-img/work-1.jpg",
+    image: new URL("../assets/img/portfolio-img/work-1.jpg", import.meta.url)
+      .href,
     title: "Fitness Trainer UI Card",
     link: "#",
   },
   {
-    image: "../assets/img/portfolio-img/work-2.jpg",
+    image: new URL("../assets/img/portfolio-img/work-2.jpg", import.meta.url)
+      .href,
     title: "Business Card Design",
     link: "#",
   },
   {
-    image: "../assets/img/portfolio-img/work-3.jpg",
+    image: new URL("../assets/img/portfolio-img/work-3.jpg", import.meta.url)
+      .href,
     title: "Branding Flyer",
     link: "#",
   },
   {
-    image: "../assets/img/portfolio-img/work-4.jpg",
+    image: new URL("../assets/img/portfolio-img/work-4.jpg", import.meta.url)
+      .href,
     title: "Modern Web Template",
     link: "#",
   },
   {
-    image: "../assets/img/portfolio-img/work-5.jpg",
+    image: new URL("../assets/img/portfolio-img/work-5.jpg", import.meta.url)
+      .href,
     title: "UI Elements Pack",
     link: "#",
   },
   {
-    image: "../assets/img/portfolio-img/work-6.jpg",
+    image: new URL("../assets/img/portfolio-img/work-6.jpg", import.meta.url)
+      .href,
     title: "Logo Design",
     link: "#",
   },
   {
-    image: "../assets/img/portfolio-img/work-7.jpg",
+    image: new URL("../assets/img/portfolio-img/work-7.jpg", import.meta.url)
+      .href,
     title: "Logo Design",
     link: "#",
   },
   {
-    image: "../assets/img/portfolio-img/work-8-scaled-1.jpg",
+    image: new URL(
+      "../assets/img/portfolio-img/work-8-scaled-1.jpg",
+      import.meta.url
+    ).href,
     title: "Logo Design",
     link: "#",
   },
