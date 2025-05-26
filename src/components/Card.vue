@@ -46,7 +46,11 @@ defineProps({
 }
 @media (max-width: 576px) {
   .portfolio-image-wrapper {
-    height: 180px;
+    aspect-ratio: 1/1;
+    height: auto;
+  }
+  .portfolio-card {
+    min-height: auto;
   }
 }
 .portfolio-image {
