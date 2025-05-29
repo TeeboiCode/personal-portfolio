@@ -7,6 +7,7 @@ import Projects from "../views/Projects.vue";
 import Testimonials from "../views/Testimonials.vue";
 import PricingPlans from "../views/PricingPlans.vue";
 import Contact from "../views/Contact.vue";
+import Resume from "../views/Resume.vue";
 
 const routes = [
   { path: "/", component: Home },
@@ -22,6 +23,7 @@ const routes = [
     name: "Portfolio",
     component: () => import("../views/portfolio.vue"),
   },
+  { path: "/resume", name: "Resume", component: Resume },
   // You can add more routes here as needed
 ];
 

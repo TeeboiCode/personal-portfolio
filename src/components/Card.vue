@@ -1,5 +1,5 @@
 <template>
-  <div class="portfolio-card">
+  <div class="portfolio-card" @click="$emit('click')">
     <div class="portfolio-image-wrapper">
       <img :src="image" :alt="title" class="portfolio-image" />
     </div>
@@ -38,7 +38,7 @@ defineProps({
 }
 .portfolio-image-wrapper {
   width: 100%;
-  height: 220px;
+  height: 250px;
   background: #181920;
   position: relative;
   flex-shrink: 0;

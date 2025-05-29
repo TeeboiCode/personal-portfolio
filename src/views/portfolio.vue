@@ -2,7 +2,7 @@
   <div class="container p-0 py-lg-5 px-lg-4 fade-in">
     <div class="overlay-background d-none d-lg-block"></div>
     <div class="overlay-background-2 d-none d-lg-block"></div>
-    <h2 class="mb-4 headling">Portfolio</h2>
+    <h2 class="mb-4 headling text-start">Portfolio</h2>
     <div class="row g-4">
       <div
         v-for="(item, idx) in cards"
@@ -14,14 +14,27 @@
           :title="item.title"
           :link="item.link"
           class="w-100"
+          @click="openOverlay(idx)"
         />
       </div>
     </div>
+    <ImageOverlay
+      :visible="overlayVisible"
+      :image="cards[selectedIndex]?.image"
+      :title="cards[selectedIndex]?.title"
+      :currentIndex="selectedIndex"
+      :total="cards.length"
+      @close="closeOverlay"
+      @next="selectedIndex < cards.length - 1 ? selectedIndex++ : null"
+      @prev="selectedIndex > 0 ? selectedIndex-- : null"
+    />
   </div>
 </template>
 
 <script setup>
 import Card from "../components/Card.vue";
+import ImageOverlay from "../components/ImageOverlay.vue";
+import { ref } from "vue";
 
 const cards = [
   {
@@ -75,6 +88,17 @@ const cards = [
     link: "#",
   },
 ];
+
+const overlayVisible = ref(false);
+const selectedIndex = ref(0);
+
+function openOverlay(idx) {
+  selectedIndex.value = idx;
+  overlayVisible.value = true;
+}
+function closeOverlay() {
+  overlayVisible.value = false;
+}
 </script>
 
 <style scoped>

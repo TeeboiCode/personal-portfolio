@@ -69,6 +69,13 @@
           >
 
           <router-link
+            to="/resume"
+            class="menubar-link"
+            @click="openMenu = false"
+            >RESUME</router-link
+          >
+
+          <router-link
             to="/history"
             class="menubar-link"
             @click="openMenu = false"

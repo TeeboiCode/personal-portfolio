@@ -1,6 +1,6 @@
 <template>
   <div class="recommendation-carousel">
-    <div class="recommendation-scroll-row mb-3" ref="scrollRow">
+    <div class="recommendation-scroll-row mb-1" ref="scrollRow">
       <div
         class="testimonial-card"
         v-for="(rec, i) in props.recommendations"
@@ -14,7 +14,7 @@
         />
       </div>
     </div>
-    <div class="d-flex align-items-center justify-content-between mt-2">
+    <div class="d-flex align-items-center justify-content-between">
       <div class="carousel-dots">
         <span
           v-for="n in totalSlides"
